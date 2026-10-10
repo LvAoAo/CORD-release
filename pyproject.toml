@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cord-rl"
+version = "0.1.0"
+description = "CORD for skill-conditioned agent training"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {file = "LICENSE"}
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cord*", "verl*", "agent_system*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+verl = ["version/*", "trainer/config/*.yaml"]
+agent_system = ["**/*.yaml", "**/*.json", "**/*.twl2", "**/*.pddl", "**/*.html", "**/*.css", "**/*.npy", "**/*.txt"]
